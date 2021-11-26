@@ -56,9 +56,9 @@ int main(int argc, char *argv[]) {
     } else {
         cout << "Unable to open file";
     }
-    
+//     cout<<"!!!"<<endl;
     dgesv_(&n, &nrhs, a, &lda, ipiv, b, &lbd, &info);
-
+//     cout<<"!!!"<<endl;
     if (info == 0) {
         ofstream file_c(out_c_path);
         if (file_c.is_open()) {
