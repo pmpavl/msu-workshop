@@ -1,11 +1,13 @@
 #include <ctime>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string>
 #include <time.h>
+
 
 using namespace std;
 const string out_path = "in_out/out_int.txt";

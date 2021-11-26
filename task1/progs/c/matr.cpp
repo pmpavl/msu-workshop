@@ -1,5 +1,6 @@
 #include <ctime>
 #include <fstream>
+#include <iomanip>
 #include <iostream>
 #include <math.h>
 #include <stdio.h>
@@ -8,12 +9,13 @@
 #include <string>
 #include <time.h>
 
-#include <Accelerate/Accelerate.h>
+extern "C" void dgesv_(int *n, int *nrhs, double *a, int *lda, int *ipiv,
+                       double *b, int *lbd, int *info);
 
 using namespace std;
-const string out_с_path = "../in_out/out_с.txt";
-const string in_A_path = "../in_out/in_A.txt";
-const string in_b_path = "../in_out/in_b.txt";
+const string out_c_path = "in_out/out_с.txt";
+const string in_A_path = "in_out/in_A.txt";
+const string in_b_path = "in_out/in_b.txt";
 
 int main(int argc, char *argv[]) {
   int n = 0; // размерность матрицы
@@ -51,17 +53,10 @@ int main(int argc, char *argv[]) {
     cout << "Unable to open file";
   }
 
-  for (i = 0; i < n; i++) {
-    for (j = 0; j < n; j++) {
-      cout << a[j][i] << " ";
-    }
-    cout << endl;
-  }
-
   dgesv_(&n, &nrhs, &a[0][0], &lda, ipiv, &b[0][0], &ldb, &info);
 
   if (info == 0) {
-    ofstream file_c(out_с_path);
+    ofstream file_c(out_c_path);
     if (file_c.is_open()) {
       file_c << setprecision(17);
       for (int i = 0; i < n; i++) {
