@@ -16,9 +16,9 @@ extern "C" {
 
 
 using namespace std;
-const string out_c_path = "../in_out/out_с.txt";
-const string in_A_path = "../in_out/in_A.txt";
-const string in_b_path = "../in_out/in_b.txt";
+const string out_c_path = "in_out/out_с.txt";
+const string in_A_path = "in_out/in_A.txt";
+const string in_b_path = "in_out/in_b.txt";
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
