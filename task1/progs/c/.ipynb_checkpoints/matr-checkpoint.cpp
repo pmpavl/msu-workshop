@@ -8,14 +8,17 @@
 #include <string.h>
 #include <string>
 #include <time.h>
+#include <vector>
 
-extern "C" void dgesv_(int *n, int *nrhs, double *a, int *lda, int *ipiv,
-                       double *b, int *lbd, int *info);
+extern "C" {
+  void dgesv_(int *n, int *nrhs, double *a, int *lda, int *ipiv, double *b, int *ldb, int *info);
+}
+
 
 using namespace std;
-const string out_c_path = "in_out/out_с.txt";
-const string in_A_path = "in_out/in_A.txt";
-const string in_b_path = "in_out/in_b.txt";
+const string out_c_path = "../in_out/out_с.txt";
+const string in_A_path = "../in_out/in_A.txt";
+const string in_b_path = "../in_out/in_b.txt";
 
 int main(int argc, char *argv[]) {
     if (argc != 2) {
@@ -27,7 +30,7 @@ int main(int argc, char *argv[]) {
     double *a = new double [n*n];
     double *b = new double [n];
     int lda = n;
-    int ldb = n;
+    int lbd = n;
     int *ipiv = new int [n];
     int info;
     int i, j;
@@ -53,8 +56,8 @@ int main(int argc, char *argv[]) {
     } else {
         cout << "Unable to open file";
     }
-
-    dgesv_(&n, &nrhs, a, &lda, ipiv, b, &ldb, &info);
+    
+    dgesv_(&n, &nrhs, a, &lda, ipiv, b, &lbd, &info);
 
     if (info == 0) {
         ofstream file_c(out_c_path);
@@ -68,7 +71,7 @@ int main(int argc, char *argv[]) {
         }
         file_c.close();
     } else {
-        std::cerr << "dgbsv returned error " << info << "\n";
+        std::cerr << "dgesv returned error " << info << "\n";
     }
     delete []a;
     delete []b;
