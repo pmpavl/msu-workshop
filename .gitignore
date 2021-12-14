@@ -2,3 +2,5 @@
 .ipynb_checkpoints
 valgrind*
 bin
+
+*task2_check.ipynb
