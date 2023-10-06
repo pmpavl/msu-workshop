@@ -1,4 +1,4 @@
-# Programming tasks at the Moscow State University at the Faculty of Mechanics and Mathematics
+# Programming at Moscow State University
 
 ```
 Deprecated
